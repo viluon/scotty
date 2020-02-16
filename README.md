@@ -7,11 +7,12 @@ A Haskell web framework inspired by Ruby's Sinatra, using WAI and Warp.
 import Web.Scotty
 
 import Data.Monoid (mconcat)
+import Data.Char (toUpper)
 
 main = scotty 3000 $
     get "/:word" $ do
         beam <- param "word"
-        html $ mconcat ["<h1>Scotty, ", beam, " me up!</h1>"]
+        html $ mconcat ["<h1>", (toUpper (head beam):tail beam), " me up, Scotty!</h1>"]
 ```
 
 Scotty is the cheap and cheerful way to write RESTful, declarative web applications.
